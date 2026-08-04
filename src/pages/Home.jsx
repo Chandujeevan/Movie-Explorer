@@ -8,11 +8,12 @@ function Home() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const loadPopularMovies = async () => {
       try {
-        const propularMovies = await getPopularMovies();
-        setMovies(propularMovies);
+        const popularMovies = await getPopularMovies();
+        setMovies(popularMovies);
       } catch (err) {
         console.log(err);
         setError("Failed to load movies...");
@@ -20,44 +21,55 @@ function Home() {
         setLoading(false);
       }
     };
+
     loadPopularMovies();
   }, []);
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (!searchQuery.trim())return
-    if (loading) return
+    if (!searchQuery.trim() || loading) return;
 
-    setLoading(true)
-    try{
-      const searchResults = await searchMovies(searchQuery)
-      setMovies(searchResults)
-      setError(null)
-    }catch(err){
-      console.log(err)
-      setError("Failed to search movies...")
-    }finally{
-      setLoading(false)
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to search movies...");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="home">
-      <form onSubmit={handleSearch} className="search-form">
-        <input
-          type="text"
-          placeholder="Search for movies..."
-          className="search-input"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button type="submit" className="search-btn">
-          Search
-        </button>
-      </form>
-      { error && <div className="error-message">{error}</div>}
+      <section className="hero-panel">
+        <div className="hero-copy">
+          <h1>Find your next favourite movie tonight</h1>
+          <p>Discover trending releases and save the stories you want to revisit.</p>
+        </div>
+
+        <form onSubmit={handleSearch} className="search-form">
+          <input
+            type="text"
+            placeholder="Search for movies..."
+            className="search-input"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type="submit" className="search-btn">
+            Search
+          </button>
+        </form>
+
+        {/* minimal layout: no extra highlights */}
+      </section>
+
+      {error && <div className="error-message">{error}</div>}
+
       {loading ? (
-        <div className="loading">Loading...</div>
+        <div className="loading">Loading cinematic picks...</div>
       ) : (
         <div className="movies-grid">
           {movies.map((movie) => (

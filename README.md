@@ -14,7 +14,8 @@ A modern React-based movie discovery application that allows users to browse tre
 
 ## 📸 Preview
 
-> Add screenshots of your application here.
+![Home Page](Screenshot 2026-08-04 121919.png)
+
 
 ---
 

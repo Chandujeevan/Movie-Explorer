@@ -49,3 +49,11 @@
 .movies-grid > * {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* Keep favorite cards a consistent size even when few items */
+.favorites .movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  gap: 1rem;
+  justify-content: center;
+}
