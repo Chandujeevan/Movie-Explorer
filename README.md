@@ -14,7 +14,7 @@ A modern React-based movie discovery application that allows users to browse tre
 
 ## 📸 Preview
 
-![Home Page](src/assets/images/Screenshot 2026-08-04 121919.png)
+![Home Page](src/assets/images/screenshot-home.png)
 
 
 ---
@@ -122,7 +122,7 @@ https://developer.themoviedb.org/
 
 ### Home Page
 
-![Home Page](src/assets/images/Screenshot 2026-08-04 121919.png)
+![Home Page](src/assets/images/screenshot-home.png)
 
 ### Search Movies
 
